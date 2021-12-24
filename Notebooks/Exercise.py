@@ -1,4 +1,4 @@
-# streamlit run Exercise.py
+ # streamlit run Exercise.py
 
 import streamlit as st
 import pandas as pd
@@ -7,7 +7,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 import plotly.graph_objects as go
 
-df = pd.read_csv(r"D:\Step_out\0_IT_Studies\Propulsion_Academy_Gitlab\juan-aguirre\03_Visualization\day4\data\mpg.csv")
+# import data
+path_data = "../Data/mpg.csv"
+
+df = pd.read_csv(path_data)
+
+print(df.head())
 
 st.title("Highway Fuel Efficiency")
 

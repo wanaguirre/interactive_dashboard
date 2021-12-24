@@ -68,8 +68,9 @@ st.map(df)
 # widgets
 
 # checkboxs
+path_data = "../Data/mpg.csv"
 
-df2 = pd.read_csv(r"D:\Step_out\0_IT_Studies\Propulsion_Academy_Gitlab\juan-aguirre\03_Visualization\day4\data\mpg.csv")
+df2 = pd.read_csv(path_data)
 if st.checkbox("Show dataframe"):
     st.table(df2.head())
 
