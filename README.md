@@ -7,4 +7,8 @@ Streamlit is an open-source Python library which is blazingly fast that makes it
  ## 1.
  Working with a Dataframe where we have informaion about a lo of different cars, we're going to deploy the **Highway Fuel Efficiency** of those ones.
  
- 
+ <p align="center">
+  <image src="screenshots/screenshot-localhost-8501-2021-12-24-21-36-31-267.png"/>
+</p>
+
+---
