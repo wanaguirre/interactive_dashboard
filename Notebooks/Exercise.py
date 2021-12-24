@@ -12,8 +12,6 @@ path_data = "../Data/mpg.csv"
 
 df = pd.read_csv(path_data)
 
-print(df.head())
-
 st.title("Highway Fuel Efficiency")
 
 button = st.checkbox("Show dataframe")
