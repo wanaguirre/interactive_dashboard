@@ -12,100 +12,34 @@
 
 import streamlit as st
 import pandas as pd
-
-st.title("This is Title")
-
-st.header("This is Header")
-
-st.subheader("This is Subheader")
-
-st.write("hello")
-
-name = "Juan"
-
-st.write(name)
-
 import plotly.express as px
-
-df = px.data.carshare()
-
-# write datafame
-
-st.write("st.write(df)")
-st.write(df)
-
-st.write("st.dataframe(df)")
-st.dataframe(df)
-
-st.write("st.dataframe(df, 200, 111)")
-st.dataframe(df, 200, 111)
-
-# st.write("st.table(df)")
-# st.table(df) # display to much info
-
-st.write("st.table(df.head())")
-st.table(df.head())
-
-# plots and charts
-
-st.bar_chart(df["peak_hour"].value_counts())
-
+from urllib.request import urlopen
+import json
 import matplotlib.pyplot as plt
+import numpy as np
+import plotly.graph_objects as go
 
-fig, ax = plt.subplots()
-ax.hist(df["car_hours"], bins=50)
-
-st.pyplot(fig)
-
-# Maps
-
-df["lat"] = df["centroid_lat"]
-df["lon"] = df["centroid_lon"]
-st.map(df)
-
-# more about maps in the link above
-
-# widgets
-
-# checkboxs
-path_data = "../Data/mpg.csv"
-
-df2 = pd.read_csv(path_data)
-if st.checkbox("Show dataframe"):
-    st.table(df2.head())
+st.title("US unemployment rate")
 
 
+with urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') as response:
+    counties = json.load(response)
 
-# selectBox
-
-st.selectbox("Choose",["1", "2", "3"])
-
-
-def selection(value):
-
-    value = int(value)+5
-    st.write(value)
+df = pd.read_csv("https://raw.githubusercontent.com/plotly/datasets/master/fips-unemp-16.csv",
+                   dtype={"fips": str})
 
 
-choosen_value = st.selectbox("Chse", pd.unique(["1", "2", "3"]))
-selection(choosen_value)
+fig = px.choropleth_mapbox(df, geojson=counties, locations='fips', color='unemp',
+                           color_continuous_scale="Viridis",
+                           range_color=(0, 12),
+                           mapbox_style="carto-positron",
+                           zoom=3, center = {"lat": 37.0902, "lon": -95.7129},
+                           opacity=0.5,
+                           labels={'unemp':'unemployment rate'}
+                          )
+fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
 
-# option = st.selectbox(
-#     "Select Peak Hour",
-#     sorted(pd.unique(df["peak_hour"]))
-# )
-
-# Layout
-
-st.sidebar.write(name)
-
-# Columns
-
-left, right = st.columns(2)
-
-left.table(df.head())
-right.pyplot(fig)
-
+st.plotly_chart(fig)
 
 
 
