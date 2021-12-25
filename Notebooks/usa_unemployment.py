@@ -1,15 +1,3 @@
-# create streamlit app
-# firstly go to the terminal and run "streamlit run 01_create_streamlit_app.py"
-
-# Ctrl+S
-# ReRun on the web page
-
-# All the code and examples are here
-# https://docs.streamlit.io/en/stable/api.html
-
-# to create a more formal web page
-# https://discuss.streamlit.io/t/streamlit-navbar/14936
-
 import streamlit as st
 import pandas as pd
 import plotly.express as px
