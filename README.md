@@ -12,3 +12,11 @@ Streamlit is an open-source Python library which is blazingly fast that makes it
 </p>
 
 ---
+## 2.
+This dataset gives us information about the unemployment rate of the whole USA.
+
+ <p align="center">
+  <image src="screenshots/screenshot-localhost-8501-2021-12-24-21-36-31-267.png"/>
+</p>
+
+---
